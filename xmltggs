@@ -1,0 +1,41 @@
+ Test my code, and print the result
+
+def is_valid_xml(s: str) -> bool:
+    #so this problem uses a stack, which is first in and last out. A stack is useful in this case
+  # we can add the tags to a stack. We know that if we pop a value from the stack, we'll save it to another list. then, we will have
+  # a dictonary that dictates what each item should look like. So for example, If we remove a closing tag at position 9, and the 
+  # list is 10 in length, it will be at 
+  # position 2 on the other list. the only valid opening tag can be at positions before that. If there is a opening tag at position
+  # 10 
+  
+  stack = []
+  memory1 = []
+  memory2 = []
+  verify= []
+  
+  for i in range(len(s)):
+    if s[i] != "/":
+      stack.append(s[i])
+    if s[i] == "/":
+      memory1 = stack.pop()
+      memory2 = s[i-1]
+      if memory1 == memory
+        verify.append(True)
+      else:
+        verify.append(False)
+    if False in verify:
+      return False
+    else:
+      return True
+    
+    
+    
+Gpt response:
+
+ou’re checking if s[i] == "/", but XML tags are not just slashes — they’re multi-character sequences like </tag>.
+You’re currently treating the string as if each character is a full tag, but in reality, tags like <a> or </a> span several characters and need to be parsed as full substrings, not single characters.
+
+🧠 Think about:
+	•	How to extract full tag names (e.g., between < and >)
+	•	How to distinguish opening tags like <a> from closing tags like </a>
+	•	Using a stack to push tag names when opening, and pop to match them when closing
